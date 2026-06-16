@@ -5,10 +5,7 @@ export default function ProductCard({ product, onAddToCart }) {
     <li className="col">
       <article className="product-card h-100 shadow-sm border rounded-3 p-3 position-relative d-flex flex-column">
         {product.isNew && (
-          <span className="badge bg-danger position-absolute top-0 start-0 m-2">
-            Nuevo
-          </span>
-        )}
+          <span className="badge bg-danger position-absolute top-0 start-0 m-2">Nuevo</span>)}
         
         <div className="product-image text-center mb-3">
           <img src={product.image} className="img-fluid" alt={product.name} />
@@ -37,11 +34,12 @@ export default function ProductCard({ product, onAddToCart }) {
               )}
             </div>
             
-            {/* Usando tu clase exacta para el botón del carrito */}
+
             <button className="btn-add-cart" onClick={() => onAddToCart(product)}>
               <i className="bi bi-plus-lg"></i>
             </button>
           </div>
+          
         </div>
       </article>
     </li>

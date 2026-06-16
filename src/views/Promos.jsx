@@ -3,14 +3,12 @@ import ProductCard from '../components/ProductCard';
 import { productsData } from '../data/products';
 
 export default function Promos({ onAddToCart }) {
-  // Filtrar los datos de cada sección usando tu propiedad de categoría
   const promosPara2 = productsData.filter(p => p.category === 'promos-para-2');
   const promosPersonales = productsData.filter(p => p.category === 'promos-personales');
   const cupones = productsData.filter(p => p.category === 'cupones');
 
   return (
     <main className="container py-4">
-      {/* Alerta / Cupón superior */}
       <section id="promo-banner">
         <div className="alert text-center py-2 mb-4 shadow-sm" style={{ backgroundColor: '#0000FF', color: 'white', border: 'none', borderRadius: '50px' }}>
           <span className="fw-bold text-uppercase">Solo hoy 40% de dto en combos, hamburguesas y complementos con el cupón BEMBOS40M | </span>
@@ -18,25 +16,28 @@ export default function Promos({ onAddToCart }) {
         </div>
       </section>
 
-      {/* Tabs de Categorías con tus estilos */}
+
       <nav className="category-tabs mb-5 border-bottom" aria-label="Categorías de promociones">
         <ul className="nav nav-justified">
           <li className="nav-item">
             <a className="nav-link active fw-bold border-bottom border-danger border-3 text-primary-bembos" href="#para-2">Promociones para 2</a>
           </li>
+
           <li className="nav-item">
             <a className="nav-link text-dark fw-bold" href="#personales">Promociones Personales</a>
           </li>
+
           <li className="nav-item">
             <a className="nav-link text-dark fw-bold" href="#compartir">Promociones para Compartir</a>
           </li>
+          
           <li className="nav-item">
             <a className="nav-link text-dark fw-bold" href="#cupones">Cupones</a>
           </li>
         </ul>
       </nav>
 
-      {/* Sección: Promociones para 2 */}
+
       <section id="para-2" className="mb-5">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h2 className="fw-black text-uppercase h4 m-0">Promociones para 2</h2>
@@ -49,7 +50,7 @@ export default function Promos({ onAddToCart }) {
         </ul>
       </section>
 
-      {/* Sección: Promociones Personales */}
+
       <section id="personales" className="mb-5">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h2 className="fw-black text-uppercase h4 m-0">Promociones Personales</h2>
@@ -62,7 +63,7 @@ export default function Promos({ onAddToCart }) {
         </ul>
       </section>
 
-      {/* Sección: Cupones */}
+
       <section id="cupones" className="mb-5">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h2 className="fw-black text-uppercase h4 m-0">Cupones</h2>
