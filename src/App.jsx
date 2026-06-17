@@ -56,13 +56,7 @@ export default function App() {
 
   return (
     <Router>
-      <Header 
-        cartTotal={cartTotal} 
-        cartCount={cartCount} 
-        onCartClick={() => setIsCartOpen(true)} 
-        user={user} 
-        onLogout={handleLogout} 
-      />
+      <Header cartTotal={cartTotal} cartCount={cartCount} onCartClick={() => setIsCartOpen(true)} user={user} onLogout={handleLogout} />
       
       <Routes>
         <Route path="/" element={<Home onAddToCart={handleAddToCart} />} />
@@ -75,14 +69,7 @@ export default function App() {
 
       <Footer />
 
-      <CartModal 
-        isOpen={isCartOpen}  
-        onClose={() => setIsCartOpen(false)} 
-        cartItems={cart} 
-        onUpdateQuantity={handleUpdateQuantity} 
-        onRemoveItem={handleRemoveItem} 
-        total={cartTotal}
-      />
+      <CartModal isOpen={isCartOpen}  onClose={() => setIsCartOpen(false)} cartItems={cart} onUpdateQuantity={handleUpdateQuantity} onRemoveItem={handleRemoveItem}  total={cartTotal}/>
     </Router>
   );
 }
