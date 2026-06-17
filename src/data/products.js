@@ -191,5 +191,41 @@ export const productsData = [
     image: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=80&w=500&auto=format&fit=crop",
     isNew: false,
     category: "combos"
+  },
+  {
+    id: 20,
+    name: "Hamburguesa Huachana",
+    description: "Deliciosa hamburguesa a la parrilla, huevo, huachana, papas al hilo y salsas.",
+    price: 24.90,
+    image: "https://www.bembos.com.pe/media/catalog/product/_/h/_huachana_1000x1000.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg",
+    isNew: true,
+    category: "hamburguesas"
+  },
+  {
+    id: 21,
+    name: "Hamburguesa Extrema",
+    description: "Hamburguesa doble a la parrilla con queso edam, tocino, tomate y lechuga.",
+    price: 24.90,
+    image: "https://www.bembos.com.pe/media/catalog/product/2/1/2146463860_1_1.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg",
+    isNew: false,
+    category: "hamburguesas"
+  },
+  {
+    id: 22,
+    name: "Hamburguesa Parrillera",
+    description: "Hamburguesa a la parrilla, chorizo a la parrilla, chimichurri artesanal y vegetales.",
+    price: 24.90,
+    image: "https://www.bembos.com.pe/media/catalog/product/2/1/2146463859_2.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg",
+    isNew: false,
+    category: "hamburguesas"
+  },
+  {
+    id: 23,
+    name: "Hamburguesa A lo Pobre",
+    description: "Hamburguesa a la parrilla, huevo frito, plátano frito, cebolla crujiente y cremas.",
+    price: 22.90,
+    image: "https://www.bembos.com.pe/media/catalog/product/2/1/2146469862_1.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg",
+    isNew: false,
+    category: "hamburguesas"
   }
 ];
