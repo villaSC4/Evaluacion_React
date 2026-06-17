@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Header from './components/Header';
 import Footer from "./components/Footer";
 import Home from './views/Home';
@@ -9,7 +11,6 @@ import Combos from './views/Combos';
 import CartModal from './components/CartModal';
 
 export default function App() {
-  const [view, setView] = useState('home'); 
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [user, setUser] = useState(null); 
@@ -19,12 +20,10 @@ export default function App() {
 
   const handleAuthSuccess = (userData) => {
     setUser(userData); 
-    setView('home');  
   };
 
   const handleLogout = () => {
     setUser(null);
-    setView('home');
   };
 
   const handleAddToCart = (product) => {
@@ -56,17 +55,34 @@ export default function App() {
   };
 
   return (
-    <>
-      <Header cartTotal={cartTotal} cartCount={cartCount} onCartClick={() => setIsCartOpen(true)} currentView={view} setView={setView} user={user} onLogout={handleLogout} />
-        {view === 'home' && <Home onAddToCart={handleAddToCart} setView={setView} />}
-        {view === 'promos' && <Promos onAddToCart={handleAddToCart} />} 
-        {view === 'combos' && <Combos onAddToCart={handleAddToCart} />}
-        {view === 'login' && <Login onAuthSuccess={handleAuthSuccess} />}                               
-        {view === 'locales' && <Locales setView={setView} />}
+    <Router>
+      <Header 
+        cartTotal={cartTotal} 
+        cartCount={cartCount} 
+        onCartClick={() => setIsCartOpen(true)} 
+        user={user} 
+        onLogout={handleLogout} 
+      />
+      
+      <Routes>
+        <Route path="/" element={<Home onAddToCart={handleAddToCart} />} />
+        <Route path="/promos" element={<Promos onAddToCart={handleAddToCart} />} /> 
+        <Route path="/combos" element={<Combos onAddToCart={handleAddToCart} />} />
+        <Route path="/programa-lealtad" element={<Login onAuthSuccess={handleAuthSuccess} />} /> 
+        <Route path="/login" element={<Login onAuthSuccess={handleAuthSuccess} />} /> 
+        <Route path="/locales" element={<Locales />} />
+      </Routes>
 
-    <Footer />
+      <Footer />
 
-      <CartModal isOpen={isCartOpen}  onClose={() => setIsCartOpen(false)} cartItems={cart} onUpdateQuantity={handleUpdateQuantity} onRemoveItem={handleRemoveItem} total={cartTotal}/>
-    </>
+      <CartModal 
+        isOpen={isCartOpen}  
+        onClose={() => setIsCartOpen(false)} 
+        cartItems={cart} 
+        onUpdateQuantity={handleUpdateQuantity} 
+        onRemoveItem={handleRemoveItem} 
+        total={cartTotal}
+      />
+    </Router>
   );
 }

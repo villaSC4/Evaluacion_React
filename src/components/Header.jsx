@@ -1,43 +1,39 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
-export default function Header({ cartTotal, cartCount, onCartClick, currentView, setView, user, onLogout }) {
+export default function Header({ cartTotal, cartCount, onCartClick, user, onLogout }) {
   return (
     <header className="bg-primary-bembos py-2 sticky-top">
       <div className="container-fluid px-lg-5">
         <nav className="d-flex align-items-center justify-content-between">
           
-          <div className="header-logo cursor-pointer" onClick={() => setView('home')}>
+          <Link to="/" className="header-logo cursor-pointer">
             <img src="https://www.bembos.com.pe/static/version1776085287/frontend/Ngr/bembos/es_PE/images/logo.svg" alt="Bembos" className="img-fluid" style={{ maxHeight: "50px" }} />
-          </div>
+          </Link>
 
           <ul className="nav d-none d-xl-flex align-items-center mx-auto">
             <li className="nav-item">
-              <button onClick={() => setView('home')} className={`btn nav-link text-white fw-bold d-flex align-items-center ${currentView === 'home' ? 'text-warning' : ''}`}>
+              <NavLink to="/" className={({ isActive }) => `nav-link text-white fw-bold d-flex align-items-center ${isActive ? 'text-warning' : ''}`}>
                 <i className="bi bi-list-columns-reverse me-2"></i> MENÚ
-              </button>
+              </NavLink>
             </li>
             
             <li className="nav-item">
-              <button 
-                onClick={() => setView('promos')} 
-                className={`btn nav-link text-white fw-bold d-flex align-items-center ${currentView === 'promos' ? 'text-warning' : ''}`}>
+              <NavLink to="/promos" className={({ isActive }) => `nav-link text-white fw-bold d-flex align-items-center ${isActive ? 'text-warning' : ''}`}>
                 <i className="bi bi-patch-check me-2"></i> PROMOS EXCLUSIVAS
-              </button>
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <span 
-                onClick={() => setView('login')} 
-                className={`nav-link text-white fw-bold d-flex align-items-center ${currentView === 'login' ? 'text-warning' : ''}`}
-                style={{ cursor: 'pointer', userSelect: 'none' }}>
+              <NavLink to="/programa-lealtad" className={({ isActive }) => `nav-link text-white fw-bold d-flex align-items-center ${isActive ? 'text-warning' : ''}`}>
                 <i className="bi bi-heart-fill me-2"></i> PROGRAMA LEALTAD
-              </span>
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <button onClick={() => setView('locales')} className={`btn nav-link text-white fw-bold d-flex align-items-center ${currentView === 'locales' ? 'text-warning' : ''}`}>
+              <NavLink to="/locales" className={({ isActive }) => `nav-link text-white fw-bold d-flex align-items-center ${isActive ? 'text-warning' : ''}`}>
                 <i className="bi bi-shop me-2"></i> LOCALES 
-              </button>
+              </NavLink>
             </li>
 
             <li className="nav-item">
@@ -74,16 +70,13 @@ export default function Header({ cartTotal, cartCount, onCartClick, currentView,
                 </div>
               </div>
             ) : (
-              <div 
-                className={`d-flex align-items-center gap-2 cursor-pointer transition-all ${currentView === 'login' ? 'text-warning' : 'text-white'}`} 
-                onClick={() => setView('login')}
-              >
+              <NavLink to="/login" className={({ isActive }) => `d-flex align-items-center gap-2 cursor-pointer transition-all text-decoration-none ${isActive ? 'text-warning' : 'text-white'}`}>
                 <i className="bi bi-person fs-3"></i>
                 <div className="lh-1 text-start">
                   <small className="d-block" style={{ fontSize: "0.7rem" }}>Hola,</small>
                   <span className="fw-bold">Iniciar Sesión</span>
                 </div>
-              </div>
+              </NavLink>
             )}
 
             <button onClick={onCartClick} className="btn btn-warning rounded-pill d-flex align-items-center px-4 py-2 fw-bold position-relative">
@@ -101,4 +94,4 @@ export default function Header({ cartTotal, cartCount, onCartClick, currentView,
       </div>
     </header>
   );
-} 
+}
