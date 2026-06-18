@@ -23,7 +23,7 @@ export default function Footer() {
             <h5 className="fw-bold mb-3" style={{ fontSize: '1rem' }}>Nuestros Productos</h5>
             <ul className="list-unstyled footer-links">
               <li><a href="#">Promociones</a></li>
-              <li><a href="#">Combos</a></li>
+              <li><a href="/combos">Combos</a></li>
               <li><a href="#">Hamburguesas</a></li>
               <li><a href="#">Pollo</a></li>
               <li><a href="#">Complementos</a></li>

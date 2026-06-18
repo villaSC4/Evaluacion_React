@@ -16,13 +16,7 @@ export default function App() {
 
   return (
     <Router>
-      <Header 
-        cartTotal={state.cartTotal} 
-        cartCount={state.cartCount} 
-        onCartClick={() => state.setIsCartOpen(true)} 
-        user={state.user} 
-        onLogout={state.handleLogout} 
-      />
+      <Header cartTotal={state.cartTotal} cartCount={state.cartCount} onCartClick={() => state.setIsCartOpen(true)} user={state.user}  onLogout={state.handleLogout} />
       
       <Routes>
         <Route path="/" element={<Home onAddToCart={state.handleAddToCart} />} />
@@ -35,14 +29,8 @@ export default function App() {
 
       <Footer />
 
-      <CartModal 
-        isOpen={state.isCartOpen}  
-        onClose={() => state.setIsCartOpen(false)} 
-        cartItems={state.cart} 
-        onUpdateQuantity={state.handleUpdateQuantity} 
-        onRemoveItem={state.handleRemoveItem} 
-        total={state.cartTotal}
-      />
+      <CartModal isOpen={state.isCartOpen}  onClose={() => state.setIsCartOpen(false)} cartItems={state.cart} onUpdateQuantity={state.handleUpdateQuantity} onRemoveItem={state.handleRemoveItem} total={state.cartTotal}/>
+
     </Router>
   );
 }
