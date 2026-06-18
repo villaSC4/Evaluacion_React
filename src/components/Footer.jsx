@@ -22,9 +22,9 @@ export default function Footer() {
           <div className="col-6 col-sm-6 col-lg-2 text-start">
             <h5 className="fw-bold mb-3" style={{ fontSize: '1rem' }}>Nuestros Productos</h5>
             <ul className="list-unstyled footer-links">
-              <li><a href="#">Promociones</a></li>
+              <li><a href="/promos">Promociones</a></li>
               <li><a href="/combos">Combos</a></li>
-              <li><a href="#">Hamburguesas</a></li>
+              <li><a href="/combos">Hamburguesas</a></li>
               <li><a href="#">Pollo</a></li>
               <li><a href="#">Complementos</a></li>
               <li><a href="#">Menus</a></li>
