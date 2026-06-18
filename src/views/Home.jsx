@@ -83,7 +83,7 @@ export default function Home({ onAddToCart }) {
   };
 
   return (
-    <main>
+    <main style={{ backgroundColor: '#f4f6f9' }}>
       <section className="container-fluid p-0">
         <div id="heroBembos" className="carousel slide carousel-fade">
           <div className="carousel-inner">
@@ -104,19 +104,23 @@ export default function Home({ onAddToCart }) {
       </section>
 
       <section className="products-section container py-5">
-        <div className="category-nav d-flex justify-content-center gap-4 flex-wrap">
+        <div className="row justify-content-center g-4">
           
-          <div className="category-card cursor-pointer" onClick={() => navigate('/promos')} style={{ cursor: 'pointer' }}>
-            <div className="category-btn">Hamburguesas</div>
-            <div className="category-img-container">
-              <img src="https://www.bembos.com.pe/media/catalog/product/2/1/2146463859_2.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg" alt="Hamburguesas" />
+          <div className="col-6 col-sm-4 col-md-3 d-flex justify-content-center">
+            <div className="category-card cursor-pointer" onClick={() => navigate('/promos')} style={{ cursor: 'pointer' }}>
+              <div className="category-btn">Hamburguesas</div>
+              <div className="category-img-container">
+                <img src="https://www.bembos.com.pe/media/catalog/product/2/1/2146463859_2.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg" className="img-fluid" alt="Hamburguesas" />
+              </div>
             </div>
           </div>
 
-          <div className="category-card cursor-pointer" onClick={() => navigate('/combos')} style={{ cursor: 'pointer' }}>
-            <div className="category-btn">Combos</div>
-            <div className="category-img-container">
-              <img src="https://www.bembos.com.pe/media/catalog/product/_/c/_chicharronera_med_papas_med_gaseosa_1000x1000_2.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg&dpr=2" alt="Combo" />
+          <div className="col-6 col-sm-4 col-md-3 d-flex justify-content-center">
+            <div className="category-card cursor-pointer" onClick={() => navigate('/combos')} style={{ cursor: 'pointer' }}>
+              <div className="category-btn">Combos</div>
+              <div className="category-img-container">
+                <img src="https://www.bembos.com.pe/media/catalog/product/_/c/_chicharronera_med_papas_med_gaseosa_1000x1000_2.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=400&width=400&canvas=400:400&format=jpeg&dpr=2" className="img-fluid" alt="Combo" />
+              </div>
             </div>
           </div>
 
@@ -124,40 +128,49 @@ export default function Home({ onAddToCart }) {
       </section>
 
       <section className="promociones container py-5">
-        <h2 className="text-center fw-bold text-uppercase">Las mejores hamburguesas</h2>
-        <h3 className="mb-4 fw-bold">PROMOCIONES</h3>
+        <h2 className="text-center fw-black text-uppercase mb-1" style={{ color: '#002395', letterSpacing: '-0.5px' }}>Las mejores hamburguesas</h2>
+        <h3 className="mb-4 fw-black text-start fs-5" style={{ color: '#333' }}>PROMOCIONES</h3>
 
         <div 
           ref={promosRef}
-          className="d-flex gap-4 list-unstyled overflow-hidden pb-3" 
+          className="row flex-nowrap g-3 list-unstyled overflow-hidden pb-4 m-0" 
         >
           {promosList.map((product) => ( 
             <div 
-              className="flex-shrink-0" 
+              className="col-9 col-sm-6 col-md-4 col-lg-3 col-xl-2.4 flex-shrink-0" 
               key={product.id}
-              style={{ width: 'calc((100% - 64px) / 5)' }}
+              style={{ paddingLeft: '8px', paddingRight: '8px' }}
             >
-              <article className="product-card h-100 shadow-sm border rounded-3 p-3 d-flex flex-column justify-content-between position-relative bg-white">
-                <span className="badge bg-danger position-absolute top-0 start-0 m-2">Nuevo</span>
-                <div className="product-image text-center mb-3">
-                  <img src={product.image} className="img-fluid" alt={product.name} style={{ maxHeight: '140px', objectFit: 'contain' }} />
+              <article className="product-card h-100 shadow-sm border-0 rounded-4 p-3 d-flex flex-column justify-content-between position-relative bg-white transition-all" style={{ borderRadius: '16px' }}>
+                <span className="badge bg-danger position-absolute top-0 start-0 m-3 px-2 py-1 fw-bold text-uppercase" style={{ zIndex: 10, fontSize: '0.65rem', borderRadius: '4px' }}>Nuevo</span>
+                
+                <div className="product-image text-center mb-2 pt-2" style={{ overflow: 'visible' }}>
+                  <img src={product.image} className="img-fluid transition-all" alt={product.name} style={{ height: '160px', width: '100%', objectFit: 'contain', transform: 'scale(1.05)' }} />
                 </div>
-                <div className="product-content d-flex flex-column flex-grow-1 justify-content-between">
+
+                <div className="product-content d-flex flex-column flex-grow-1 justify-content-between pt-2">
                   <div>
-                    <div className="d-flex justify-content-between align-items-start mb-2">
-                      <h4 className="fw-bold m-0 fs-6 text-start">{product.name}</h4>
-                      <button className="btn btn-link p-0 text-danger shadow-none">
-                        <i className="bi bi-heart"></i>
+                    <div className="d-flex justify-content-between align-items-start mb-1">
+                      <h4 className="fw-bold m-0 text-start text-dark text-truncate" style={{ fontSize: '0.95rem', maxWidth: '85%' }}>{product.name}</h4>
+                      <button className="btn btn-link p-0 text-muted shadow-none hover-danger">
+                        <i className="bi bi-heart fs-5"></i>
                       </button>
                     </div>
-                    <p className="text-muted text-start small mb-3 lh-sm" style={{ fontSize: '0.75rem' }}>{product.description}</p>
+                    <p className="text-muted text-start small mb-3 lh-sm" style={{ fontSize: '0.75rem', display: '-webkit-box', WebkitLineClamp: '2', WebkitBoxOrient: 'vertical', overflow: 'hidden', height: '34px' }}>{product.description}</p>
                   </div>
-                  <div className="product-action d-flex align-items-center justify-content-between mt-auto pt-2">
+                  
+                  <div className="product-action d-flex align-items-center justify-content-between mt-auto pt-2 border-top border-light">
                     <div className="price-container text-start">
-                      <strong className="fs-5 d-block">S/ {product.price.toFixed(2)}</strong>
+                      <strong className="d-block" style={{ fontSize: '1.2rem', color: '#333', fontWeight: '800' }}>S/ {product.price.toFixed(2)}</strong>
+                      {product.oldPrice && (
+                        <div className="d-flex align-items-center gap-1">
+                          <small className="text-decoration-line-through text-muted" style={{ fontSize: '0.7rem' }}>S/ {product.oldPrice.toFixed(2)}</small>
+                          <span className="badge bg-danger p-1 fw-bold" style={{ fontSize: '0.6rem', borderRadius: '4px' }}>-{Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)}%</span>
+                        </div>
+                      )}
                     </div>
-                    <button className="btn-add-cart" onClick={() => onAddToCart(product)}>
-                      <span style={{ fontSize: '24px', lineHeight: '1', fontWeight: 'bold', color: 'white' }}>+</span>
+                    <button className="btn-add-cart position-static" onClick={() => onAddToCart(product)} style={{ width: '36px', height: '36px', minWidth: '36px', borderRadius: '50%', backgroundColor: '#002395', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 10px rgba(0,35,149,0.2)' }}>
+                      <span style={{ fontSize: '20px', fontWeight: 'bold', color: 'white', lineHeight: '1' }}>+</span>
                     </button>
                   </div>
                 </div>
@@ -166,51 +179,59 @@ export default function Home({ onAddToCart }) {
           ))}
         </div>
 
-        <div className="d-flex justify-content-end gap-2 mt-4">
-          <button className="btn btn-outline-primary rounded-circle" onClick={() => handleRotate('left', promosRef, setPromosList)} style={{ borderColor: '#002855', color: '#002855' }}>
-            <i className="bi bi-arrow-left"></i>
+        <div className="d-flex justify-content-end gap-2 mt-2">
+          <button className="btn btn-outline-primary rounded-circle p-0 d-flex align-items-center justify-content-center" onClick={() => handleRotate('left', promosRef, setPromosList)} style={{ width: '40px', height: '40px', borderColor: '#002395', color: '#002395', backgroundColor: 'white' }}>
+            <i className="bi bi-arrow-left fs-5"></i>
           </button>
-          <button className="btn btn-outline-primary rounded-circle" onClick={() => handleRotate('right', promosRef, setPromosList)} style={{ borderColor: '#002855', color: '#002855' }}>
-            <i className="bi bi-arrow-right"></i>
+          <button className="btn btn-outline-primary rounded-circle p-0 d-flex align-items-center justify-content-center" onClick={() => handleRotate('right', promosRef, setPromosList)} style={{ width: '40px', height: '40px', borderColor: '#002395', color: '#002395', backgroundColor: 'white' }}>
+            <i className="bi bi-arrow-right fs-5"></i>
           </button>
         </div>
       </section>
 
       <section className="promociones container py-5">
-        <h3 className="mb-4 fw-bold">LOS MÁS VENDIDOS</h3>
+        <h3 className="mb-4 fw-black text-start fs-5" style={{ color: '#333' }}>LOS MÁS VENDIDOS</h3>
         
         <div 
           ref={masVendidosRef}
-          className="d-flex gap-4 list-unstyled overflow-hidden pb-3" 
+          className="row flex-nowrap g-3 list-unstyled overflow-hidden pb-4 m-0" 
         >
           {masVendidosList.map((product) => (
             <div 
-              className="flex-shrink-0" 
+              className="col-9 col-sm-6 col-md-4 col-lg-3 col-xl-2.4 flex-shrink-0" 
               key={product.id}
-              style={{ width: 'calc((100% - 64px) / 5)' }}
+              style={{ paddingLeft: '8px', paddingRight: '8px' }}
             >
-              <article className="product-card h-100 shadow-sm border rounded-3 p-3 d-flex flex-column justify-content-between position-relative bg-white">
-                {product.isNew && <span className="badge bg-danger position-absolute top-0 start-0 m-2">Nuevo</span>}
-                <div className="product-image text-center mb-3">
-                  <img src={product.image} className="img-fluid" alt={product.name} style={{ maxHeight: '140px', objectFit: 'contain' }} />
+              <article className="product-card h-100 shadow-sm border-0 rounded-4 p-3 d-flex flex-column justify-content-between position-relative bg-white transition-all" style={{ borderRadius: '16px' }}>
+                {product.isNew && <span className="badge bg-danger position-absolute top-0 start-0 m-3 px-2 py-1 fw-bold text-uppercase" style={{ zIndex: 10, fontSize: '0.65rem', borderRadius: '4px' }}>Nuevo</span>}
+                
+                <div className="product-image text-center mb-2 pt-2" style={{ overflow: 'visible' }}>
+                  <img src={product.image} className="img-fluid transition-all" alt={product.name} style={{ height: '160px', width: '100%', objectFit: 'contain', transform: 'scale(1.05)' }} />
                 </div>
-                <div className="product-content d-flex flex-column flex-grow-1 justify-content-between">
+
+                <div className="product-content d-flex flex-column flex-grow-1 justify-content-between pt-2">
                   <div>
-                    <div className="d-flex justify-content-between align-items-start mb-2">
-                      <h4 className="fw-bold m-0 fs-6 text-start">{product.name}</h4>
-                      <button className="btn btn-link p-0 text-danger shadow-none">
-                        <i className="bi bi-heart"></i>
+                    <div className="d-flex justify-content-between align-items-start mb-1">
+                      <h4 className="fw-bold m-0 text-start text-dark text-truncate" style={{ fontSize: '0.95rem', maxWidth: '85%' }}>{product.name}</h4>
+                      <button className="btn btn-link p-0 text-muted shadow-none hover-danger">
+                        <i className="bi bi-heart fs-5"></i>
                       </button>
                     </div>
-                    <p className="text-muted text-start small mb-3 lh-sm" style={{ fontSize: '0.75rem' }}>{product.description}</p>
+                    <p className="text-muted text-start small mb-3 lh-sm" style={{ fontSize: '0.75rem', display: '-webkit-box', WebkitLineClamp: '2', WebkitBoxOrient: 'vertical', overflow: 'hidden', height: '34px' }}>{product.description}</p>
                   </div>
-                  <div className="product-action d-flex align-items-center justify-content-between mt-auto pt-2">
+                  
+                  <div className="product-action d-flex align-items-center justify-content-between mt-auto pt-2 border-top border-light">
                     <div className="price-container text-start">
-                      <strong className="fs-5 d-block">S/ {product.price.toFixed(2)}</strong>
-                      {product.oldPrice && <small className="text-decoration-line-through text-muted">S/ {product.oldPrice.toFixed(2)}</small>}
+                      <strong className="d-block" style={{ fontSize: '1.2rem', color: '#333', fontWeight: '800' }}>S/ {product.price.toFixed(2)}</strong>
+                      {product.oldPrice && (
+                        <div className="d-flex align-items-center gap-1">
+                          <small className="text-decoration-line-through text-muted" style={{ fontSize: '0.7rem' }}>S/ {product.oldPrice.toFixed(2)}</small>
+                          <span className="badge bg-danger p-1 fw-bold" style={{ fontSize: '0.6rem', borderRadius: '4px' }}>-{Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)}%</span>
+                        </div>
+                      )}
                     </div>
-                    <button className="btn-add-cart" onClick={() => onAddToCart(product)}>
-                      <span style={{ fontSize: '24px', lineHeight: '1', fontWeight: 'bold', color: 'white' }}>+</span>
+                    <button className="btn-add-cart position-static" onClick={() => onAddToCart(product)} style={{ width: '36px', height: '36px', minWidth: '36px', borderRadius: '50%', backgroundColor: '#002395', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 10px rgba(0,35,149,0.2)' }}>
+                      <span style={{ fontSize: '20px', fontWeight: 'bold', color: 'white', lineHeight: '1' }}>+</span>
                     </button>
                   </div>
                 </div>
@@ -219,12 +240,12 @@ export default function Home({ onAddToCart }) {
           ))}
         </div>
 
-        <div className="d-flex justify-content-end gap-2 mt-4">
-          <button className="btn btn-outline-primary rounded-circle" onClick={() => handleRotate('left', masVendidosRef, setMasVendidosList)} style={{ borderColor: '#002855', color: '#002855' }}>
-            <i className="bi bi-arrow-left"></i>
+        <div className="d-flex justify-content-end gap-2 mt-2">
+          <button className="btn btn-outline-primary rounded-circle p-0 d-flex align-items-center justify-content-center" onClick={() => handleRotate('left', masVendidosRef, setMasVendidosList)} style={{ width: '40px', height: '40px', borderColor: '#002395', color: '#002395', backgroundColor: 'white' }}>
+            <i className="bi bi-arrow-left fs-5"></i>
           </button>
-          <button className="btn btn-outline-primary rounded-circle" onClick={() => handleRotate('right', masVendidosRef, setMasVendidosList)} style={{ borderColor: '#002855', color: '#002855' }}>
-            <i className="bi bi-arrow-right"></i>
+          <button className="btn btn-outline-primary rounded-circle p-0 d-flex align-items-center justify-content-center" onClick={() => handleRotate('right', masVendidosRef, setMasVendidosList)} style={{ width: '40px', height: '40px', borderColor: '#002395', color: '#002395', backgroundColor: 'white' }}>
+            <i className="bi bi-arrow-right fs-5"></i>
           </button>
         </div>
       </section>
