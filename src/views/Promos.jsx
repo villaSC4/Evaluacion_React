@@ -5,6 +5,7 @@ import { productsData } from '../data/products';
 export default function Promos({ onAddToCart }) {
   const promosPara2 = productsData.filter(p => p.category === 'promos-para-2');
   const promosPersonales = productsData.filter(p => p.category === 'promos-personales');
+  const promosCompartir = productsData.filter(p => p.category === 'inicio-promos');
   const cupones = productsData.filter(p => p.category === 'cupones');
 
   return (
@@ -55,6 +56,18 @@ export default function Promos({ onAddToCart }) {
         </div>
         <ul className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-2 g-sm-3 g-md-4 list-unstyled">
           {promosPersonales.map(product => (
+            <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} />
+          ))}
+        </ul>
+      </section>
+
+      <section id="compartir" className="mb-5">
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <h2 className="fw-black text-uppercase h5 h-md-4 m-0">Promociones para Compartir</h2>
+          <a href="#" className="text-primary-bembos fw-bold small text-decoration-none">Ver todo</a>
+        </div>
+        <ul className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-2 g-sm-3 g-md-4 list-unstyled">
+          {promosCompartir.map(product => (
             <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} />
           ))}
         </ul>

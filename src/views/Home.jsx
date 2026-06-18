@@ -103,7 +103,7 @@ export default function Home({ onAddToCart }) {
         </div>
       </section>
 
-      <section className="products-section container py-5">
+      <section className="products-section container py-4">
         <div className="row justify-content-center g-4">
           
           <div className="col-6 col-sm-4 col-md-3 d-flex justify-content-center">
@@ -127,7 +127,7 @@ export default function Home({ onAddToCart }) {
         </div>
       </section>
 
-      <section className="promociones container py-5">
+      <section className="promociones container py-2">
         <h2 className="text-center fw-black text-uppercase mb-1" style={{ color: '#002395', letterSpacing: '-0.5px' }}>Las mejores hamburguesas</h2>
         <h3 className="mb-4 fw-black text-start fs-5" style={{ color: '#333' }}>PROMOCIONES</h3>
 
@@ -189,7 +189,7 @@ export default function Home({ onAddToCart }) {
         </div>
       </section>
 
-      <section className="promociones container py-5">
+      <section className="promociones container py-2">
         <h3 className="mb-4 fw-black text-start fs-5" style={{ color: '#333' }}>LOS MÁS VENDIDOS</h3>
         
         <div 
